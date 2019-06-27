@@ -18,7 +18,7 @@ public class Bean {
 
         Color c = g.getColor();
         g.setColor(Color.RED);
-        g.fillOval(x, y , Yard.NodeSize, Yard.NodeSize);
+        g.fillOval(x, y, Yard.NodeSize, Yard.NodeSize);
 
         g.setColor(c);
     }

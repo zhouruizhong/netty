@@ -99,10 +99,10 @@ public class TimeClientHandle implements Runnable {
                     String body = new String(bytes, "UTF-8");
                     System.out.println("Now is : " + body);
                     this.stop = true;
-                }else if (readBytes < 0){
+                } else if (readBytes < 0) {
                     key.cancel();
                     socketChannel.close();
-                }else {
+                } else {
                     System.out.println();
                 }
             }
@@ -111,21 +111,21 @@ public class TimeClientHandle implements Runnable {
 
     private void doConnect() throws IOException {
         // 如果直接连接成功，则注册到多路复用器上，发送请求消息，读应答
-        if (socketChannel.connect(new InetSocketAddress(host, port))){
+        if (socketChannel.connect(new InetSocketAddress(host, port))) {
             socketChannel.register(selector, SelectionKey.OP_READ);
             doWrite(socketChannel);
-        }else {
+        } else {
             socketChannel.register(selector, SelectionKey.OP_CONNECT);
         }
     }
 
-    private void doWrite(SocketChannel socketChannel) throws  IOException {
+    private void doWrite(SocketChannel socketChannel) throws IOException {
         byte[] req = "QUERY TIME ORDER".getBytes();
         ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
         writeBuffer.put(req);
         writeBuffer.flip();
         socketChannel.write(writeBuffer);
-        if (!writeBuffer.hasRemaining()){
+        if (!writeBuffer.hasRemaining()) {
             System.out.println("Send order 2 server succed.");
         }
     }

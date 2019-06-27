@@ -18,7 +18,7 @@ public class Node {
 
         Color c = g.getColor();
         g.setColor(Color.BLACK);
-        g.fillRect(x, y , Yard.NodeSize, Yard.NodeSize);
+        g.fillRect(x, y, Yard.NodeSize, Yard.NodeSize);
 
         g.setColor(c);
     }

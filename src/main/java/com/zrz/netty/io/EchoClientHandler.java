@@ -6,11 +6,16 @@ import io.netty.channel.ChannelHandlerContext;
 
 public class EchoClientHandler extends ChannelHandlerAdapter {
 
+    private int sendNumber;
     private int counter;
     static final String ECHO_REQ = "Hi , ZhouRuizhong, Welcome to Netty.$_";
 
     public EchoClientHandler(){
 
+    }
+
+    public EchoClientHandler(int sendNumber){
+        this.sendNumber = sendNumber;
     }
 
     @Override

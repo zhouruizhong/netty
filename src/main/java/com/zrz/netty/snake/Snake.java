@@ -8,19 +8,19 @@ public class Snake {
     Node head, tail;
     Dir dir = Dir.L;
 
-    Snake(){
-        head = new Node(20,20);
+    Snake() {
+        head = new Node(20, 20);
         tail = head;
     }
 
-    public void addToHead(){
+    public void addToHead() {
         Node n = null;
-        switch (dir){
+        switch (dir) {
             case L:
                 n = new Node(head.row, head.col - 1);
                 break;
             case U:
-                n = new Node(head.row-1, head.col);
+                n = new Node(head.row - 1, head.col);
                 break;
             case R:
                 n = new Node(head.row, head.col + 1);
@@ -38,7 +38,7 @@ public class Snake {
 
     public void paint(Graphics g) {
         Node n = head;
-        while (n != null){
+        while (n != null) {
             n.paint(g);
             n = n.next;
         }
@@ -46,7 +46,7 @@ public class Snake {
         move();
     }
 
-    private void move(){
+    private void move() {
         addToHead();
         removeTail();
         boundaryCheck();
@@ -67,7 +67,7 @@ public class Snake {
         }
     }
 
-    public void removeTail(){
+    public void removeTail() {
         if (tail == null) {
             return;
         }
@@ -97,7 +97,7 @@ public class Snake {
     }
 
     public void eat(Bean bean) {
-        if (head.row == bean.row && head.col == bean.col){
+        if (head.row == bean.row && head.col == bean.col) {
             addToHead();
             bean.reAppear();
         }

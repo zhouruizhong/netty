@@ -6,16 +6,18 @@ import java.net.Socket;
 
 /**
  * @author 周瑞忠
- * @description java类作用描述
  * @date 2019/5/2 14:53
  */
 public class Server {
 
     public static void main(String[] args)  throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8080);
+        ServerSocket serverSocket = new ServerSocket(8888);
         while (true){
+            // 阻塞方法
             Socket socket = serverSocket.accept();
-            new Thread(new TimeServerHandler(socket)).start();
+            new Thread(() ->{
+                    new TimeServerHandler(socket);
+            }).start();
         }
     }
 
